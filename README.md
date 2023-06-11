@@ -29,9 +29,8 @@ The Animal Shelter API is a RESTful web service designed to manage animal data f
     }
   }
   ```
-  - Update the connection string with your MySQL username and password.
 
-# Set up the database:
+- Update the connection string with your MySQL username and password.
 
 - To be sure EF Core Migrations is installed on your computer, run `dotnet tool install --global dotnet-ef --version 6.0.0`.
 - Within the production folder "AnimalShelterApi" run:
