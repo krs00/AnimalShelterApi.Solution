@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AnimalShelterApi.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AnimalShelterApi.Controllers;
 
@@ -66,6 +67,7 @@ public class AnimalsController : ControllerBase
     return animal;
   }
 
+  [Authorize]
   [HttpPost]
   public async Task<ActionResult<Animal>> PostAsync(Animal animal)
   {
@@ -74,6 +76,7 @@ public class AnimalsController : ControllerBase
     return CreatedAtAction(nameof(GetAnimalAsync), new { id = animal.AnimalId }, animal);
   }
 
+  [Authorize]
   [HttpPut("{id}")]
   public async Task<IActionResult> PutAsync(int id, Animal animal)
   {
@@ -108,6 +111,7 @@ public class AnimalsController : ControllerBase
     return _db.Animals.Any(e => e.AnimalId == id);
   }
 
+  [Authorize]
   [HttpDelete("{id}")]
   public async Task<IActionResult> DeleteAnimalAsync(int id)
   {
