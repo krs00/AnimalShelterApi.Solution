@@ -17,9 +17,16 @@ public class AnimalsController : ControllerBase
 
 
   [HttpGet]
-  public async Task<ActionResult<IEnumerable<Animal>>> GetAsync()
+  public async Task<ActionResult<IEnumerable<Animal>>> GetAsync(string species)
   {
-    return await _db.Animals.ToListAsync();
+    IQueryable<Animal> query = _db.Animals.AsQueryable();
+
+    if (species != null)
+    {
+      query = query.Where(entry => entry.Species == species);
+    }
+
+    return await query.ToListAsync();
   }
 
 
@@ -91,7 +98,7 @@ public class AnimalsController : ControllerBase
     _db.Animals.Remove(animal);
     await _db.SaveChangesAsync();
 
-    return NoContent(); 
+    return NoContent();
   }
 
 
