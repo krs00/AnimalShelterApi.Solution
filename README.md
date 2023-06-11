@@ -54,6 +54,7 @@ DELETE http://localhost:5000/api/animals{id}
 ```
 <hr>
 
+## Query Parameters
 
 | Parameter  | Type   | Required     | Description                                      | Example Url  |
 |----------- |-----   | ---------    | -------------                                    | ----------  |
