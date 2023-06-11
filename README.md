@@ -1,4 +1,4 @@
-# Animal Shelter API
+# Animal Shelter API 🐕 🐱 🐶 🐾
 
 ### By Kymani Stephens
 
