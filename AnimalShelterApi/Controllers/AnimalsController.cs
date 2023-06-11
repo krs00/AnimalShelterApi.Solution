@@ -17,7 +17,7 @@ public class AnimalsController : ControllerBase
 
 
   [HttpGet]
-  public async Task<ActionResult<IEnumerable<Animal>>> GetAsync(string species)
+  public async Task<ActionResult<IEnumerable<Animal>>> GetAsync(string species, string sex, string status, string breed, int age)
   {
     IQueryable<Animal> query = _db.Animals.AsQueryable();
 
@@ -25,6 +25,28 @@ public class AnimalsController : ControllerBase
     {
       query = query.Where(entry => entry.Species == species);
     }
+
+    if (sex != null)
+    {
+      query = query.Where(entry => entry.Sex == sex);
+    }
+
+    if (status != null)
+    {
+      query = query.Where(entry => entry.Status == status);
+    }
+
+    if (breed != null)
+    {
+      query = query.Where(entry => entry.Breed == breed);
+    }
+
+    if (age != 0)
+    {
+      query = query.Where(entry => entry.Age == age);
+    }
+
+
 
     return await query.ToListAsync();
   }
