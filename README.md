@@ -52,8 +52,23 @@ PUT http://localhost:5000/api/animals{id}
 DELETE http://localhost:5000/api/animals{id}
 
 ```
+<hr>
+
+
+| Parameter  | Type   | Required     | Description                                      | Example Url  |
+|----------- |-----   | ---------    | -------------                                    | ----------  |
+| Animals | List | not required | Returns all animals in the database | http://localhost:5000/api/animals |
+| Species       | String | not required | Returns matching species type, "Dog" or "Cat"     | http://localhost:5000/api/animals?species=[SPECIES] |
+| Sex   | String | not required | Returns matching sex type, "Male" or "Female" | http://localhost:5000/api/animals?sex=[SEX] |
+| Status    | String | not required | Returns animals with a matching status | http://localhost:5000/api/animals?status=[STATUS] |
+| Breed | String | not required | Returns animals of the matching breed | http://localhost:5000/api/animals?breed=[BREED] |
+| Age | Int | not required | Returns animals of the matching age | http://localhost:5000/api/animals?age=[AGE] |
+
+Please note that you can replace [SPECIES], [SEX], [STATUS], [BREED], and [AGE] with the actual values you want to search for in the URLs. For example, if you want to search for dogs, the URL would be: http://localhost:5000/api/animals?species=Dog.
 
 ## Known bugs
+
+Ran out of time for roles but will fix later!!!
 
 ## License
 
