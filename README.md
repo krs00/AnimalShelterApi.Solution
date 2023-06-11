@@ -14,7 +14,7 @@ The Animal Shelter API is a RESTful web service designed to manage animal data f
 - MySQL
 - Entity Framework Core
 
-## Instructions to set up database
+## Instructions for database setup
 
 - Clone this repository.
 - Open your terminal (e.g. Terminal or GitBash) and navigate to this project's directory called "AnimalShelterApi".
