@@ -39,7 +39,7 @@ The Animal Shelter API is a RESTful web service designed to manage animal data f
 dotnet ef database update
 ```
 
-- The `animal_shelter` schema will appear in your _Schemas_ tab of your MySQL Workbench.
+- The `animal_shelter` schema will appear in your _Schemas_ tab of MySQL Workbench.
 
 ## Using This Api
 
