@@ -38,7 +38,7 @@ public class AnimalsController : ControllerBase
   }
 
   [HttpPost]
-  public async Task<ActionResult<Animal>> Post(Animal animal)
+  public async Task<ActionResult<Animal>> PostAsync(Animal animal)
   {
     _db.Animals.Add(animal);
     await _db.SaveChangesAsync();
@@ -46,7 +46,7 @@ public class AnimalsController : ControllerBase
   }
 
   [HttpPut("{id}")]
-  public async Task<IActionResult> Put(int id, Animal animal)
+  public async Task<IActionResult> PutAsync(int id, Animal animal)
   {
     if (id != animal.AnimalId)
     {
@@ -80,7 +80,7 @@ public class AnimalsController : ControllerBase
   }
 
   [HttpDelete("{id}")]
-  public async Task<IActionResult> DeleteAnimal(int id)
+  public async Task<IActionResult> DeleteAnimalAsync(int id)
   {
     Animal animal = await _db.Animals.FindAsync(id);
     if (animal == null)
@@ -91,7 +91,7 @@ public class AnimalsController : ControllerBase
     _db.Animals.Remove(animal);
     await _db.SaveChangesAsync();
 
-    return NoContent();
+    return NoContent(); 
   }
 
 
