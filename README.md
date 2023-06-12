@@ -22,7 +22,6 @@ The Animal Shelter API is a RESTful web service designed to manage animal data f
 * Set up the project:
   - Create a file called 'appsettings.json' in the production directory "AnimalShelterApi".
   - Add the following code to the appsettings.json file:
-  <br>
   ```
   {
   "ConnectionStrings": {
