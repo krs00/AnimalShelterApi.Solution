@@ -34,7 +34,7 @@ The Animal Shelter API is a RESTful web service designed to manage animal data f
   },
   "AllowedHosts": "*",
   "ConnectionStrings": {
-   "DefaultConnection": "Server=localhost;Port=3306;database=animal_shelter;uid=[USERNAME];pwd=[PASSWORD];"ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+   "DefaultConnection": "Server=localhost;Port=3306;database=animal_shelter;uid=[USERNAME];pwd=[PASSWORD];
   },
   "JWT": {
     "ValidAudience": "http://localhost:4200",
