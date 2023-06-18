@@ -5,8 +5,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AnimalShelterApi.Controllers;
 
-[Route("api/[controller]")]
+[Authorize]
 [ApiController]
+[Route("api/[controller]")]
 public class AnimalsController : ControllerBase
 {
   private readonly AnimalShelterApiContext _db;

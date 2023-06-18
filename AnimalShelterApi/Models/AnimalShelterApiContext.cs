@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace AnimalShelterApi.Models;
-public class AnimalShelterApiContext : DbContext
+public class AnimalShelterApiContext : IdentityDbContext<IdentityUser>
 {
   public DbSet<Animal> Animals { get; set; }
 
@@ -11,6 +13,9 @@ public class AnimalShelterApiContext : DbContext
 
   protected override void OnModelCreating(ModelBuilder builder)
   {
+
+    base.OnModelCreating(builder);
+
     builder.Entity<Animal>()
     .HasData(
         // THESE ARE CATS

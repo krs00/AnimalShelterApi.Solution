@@ -85,6 +85,31 @@ DELETE http://localhost:5000/api/animals/{id}
 
 Please note that you can replace [SPECIES], [SEX], [STATUS], [BREED], and [AGE] with the actual values you want to search for in the URLs. For example, if you want to search for dogs, the URL would be: http://localhost:5000/api/animals?species=Dog.
 
+## JSON Web Tokens
+
+- To access information from this API you must be authenticated with a JWT
+- Register for an account by making a POST request to `http://localhost:5000/api/Authenticate/register`
+- Add your register details as raw JSON format in the request body
+```
+{
+    "username" : "example",
+    "email" : "example@gmail.com",
+    "password" : "Password@123"
+}
+```
+- Next, log in by making a POST request to `http://localhost:5000/api/Authenticate/login`
+- In the request body, provide your username and password to log in and get a valid JWT token
+```
+{
+    "username" : "example",
+    "password" : "Password@123"
+}
+```
+- To access information from the API, use the JWT token you recive once you log in and copy/paste it into the Authorization tab of Postman using a type of "Bearer Token"
+- Enjoy the Animal API!
+
+
+
 ## Known bugs
 
 Ran out of time for roles but will fix later!!!
