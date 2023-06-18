@@ -26,8 +26,20 @@ The Animal Shelter API is a RESTful web service designed to manage animal data f
 
   ```
   {
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Port=3306;database=animal_shelter;uid=[USERNAME];pwd=[PASSWORD];"
+   "DefaultConnection": "Server=localhost;Port=3306;database=animal_shelter;uid=[USERNAME];pwd=[PASSWORD];"ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+  },
+  "JWT": {
+    "ValidAudience": "http://localhost:4200",
+    "ValidIssuer": "http://localhost:5000",
+    "Secret": "JWTAuthenticationHIGHsecuredPasswordVVVp1OH7Xzyr" 
   }
   }
 
@@ -90,6 +102,7 @@ Please note that you can replace [SPECIES], [SEX], [STATUS], [BREED], and [AGE] 
 - To access information from this API you must be authenticated with a JWT
 - Register for an account by making a POST request to `http://localhost:5000/api/Authenticate/register`
 - Add your register details as raw JSON format in the request body
+
 ```
 {
     "username" : "example",
@@ -97,18 +110,19 @@ Please note that you can replace [SPECIES], [SEX], [STATUS], [BREED], and [AGE] 
     "password" : "Password@123"
 }
 ```
+
 - Next, log in by making a POST request to `http://localhost:5000/api/Authenticate/login`
 - In the request body, provide your username and password to log in and get a valid JWT token
+
 ```
 {
     "username" : "example",
     "password" : "Password@123"
 }
 ```
+
 - To access information from the API, use the JWT token you recive once you log in and copy/paste it into the Authorization tab of Postman using a type of "Bearer Token"
 - Enjoy the Animal API!
-
-
 
 ## Known bugs
 
