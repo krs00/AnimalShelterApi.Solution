@@ -97,13 +97,18 @@ DELETE http://localhost:5000/api/animals/{id}
 
 Please note that you can replace [SPECIES], [SEX], [STATUS], [BREED], and [AGE] with the actual values you want to search for in the URLs. For example, if you want to search for dogs, the URL would be: http://localhost:5000/api/animals?species=Dog.
 
-## JSON Web Tokens
+## JSON Web Tokens (JWT) - Accessing API
 
-- To access information from this API you must be authenticated with a JWT
-- Register for an account by making a POST request to `http://localhost:5000/api/Authenticate/register`
-- Add your register details as raw JSON format in the request body
+To access information from this API, you are required to authenticate using a JSON Web Token (JWT). Follow the steps below to register for an account, log in, and obtain a valid JWT token for accessing the API.
 
+### 1. Register for an Account
+To register for an account, send a POST request to the following endpoint:
 ```
+http://localhost:5000/api/Authenticate/register
+```
+
+Include the following details in the request body, using raw JSON format:
+```json
 {
     "username" : "example",
     "email" : "example@gmail.com",
@@ -111,18 +116,31 @@ Please note that you can replace [SPECIES], [SEX], [STATUS], [BREED], and [AGE] 
 }
 ```
 
-- Next, log in by making a POST request to `http://localhost:5000/api/Authenticate/login`
-- In the request body, provide your username and password to log in and get a valid JWT token
+Replace the `username`, `email`, and `password` values with your desired registration details.
 
+### 2. Log In
+To log in and obtain a valid JWT token, send a POST request to the following endpoint:
 ```
+http://localhost:5000/api/Authenticate/login
+```
+
+Provide your username and password in the request body, using raw JSON format:
+```json
 {
     "username" : "example",
     "password" : "Password@123"
 }
 ```
 
-- To access information from the API, use the JWT token you recive once you log in and copy/paste it into the Authorization tab of Postman using a type of "Bearer Token"
-- Enjoy the Animal API!
+Replace the `username` and `password` values with the credentials you used during registration.
+
+### 3. Retrieve JWT Token
+Upon successful login, the API will respond with a JWT token. Copy the JWT token value returned in the response.
+
+### 4. Accessing API Endpoints
+To access information from the API, use the JWT token you received after logging in. In Postman, navigate to the Authorization tab and select the "Bearer Token" type. Paste the copied JWT token into the token field.
+
+Now you are authenticated and authorized to make requests to the API endpoints. Enjoy utilizing the Animal API for your desired functionality.
 
 ## Known bugs
 
