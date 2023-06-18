@@ -16,136 +16,122 @@ The Animal Shelter API is a RESTful web service designed to manage animal data f
 
 ## Instructions for database setup
 
-- Clone this repository.
-- Open your terminal (e.g. Terminal or GitBash) and navigate to this project's directory called "AnimalShelterApi".
+To set up the Animal Shelter API and the corresponding database, please follow the instructions below:
 
-* Set up the project:
+1. Clone this repository to your local machine.
 
-  - Create a file called 'appsettings.json' in the production directory "AnimalShelterApi".
-  - Add the following code to the appsettings.json file:
+2. Open your terminal or command prompt and navigate to the "AnimalShelterApi" directory.
 
-  ```
-  {
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft.AspNetCore": "Warning"
-    }
-  },
-  "AllowedHosts": "*",
-  "ConnectionStrings": {
-   "DefaultConnection": "Server=localhost;Port=3306;database=animal_shelter;uid=[USERNAME];pwd=[PASSWORD];
-  },
-  "JWT": {
-    "ValidAudience": "http://localhost:4200",
-    "ValidIssuer": "http://localhost:5000",
-    "Secret": "JWTAuthenticationHIGHsecuredPasswordVVVp1OH7Xzyr" 
-  }
-  }
+3. In the "AnimalShelterApi" directory, create a file named `appsettings.json`.
 
-  ```
+4. Open the `appsettings.json` file and add the following code:
 
-  - Create a file called 'appsettings.Development.json' in the production directory "AnimalShelterApi".
-  - Add the following code to the appsettings.Development.json file:
-
-```
+```json 
 {
- "Logging": {
-   "LogLevel": {
-     "Default": "Information",
-     "Microsoft": "Trace",
-     "Microsoft.AspNetCore": "Information",
-     "Microsoft.Hosting.Lifetime": "Information"
-    }
+"Logging": {
+  "LogLevel": {
+    "Default": "Information",
+    "Microsoft.AspNetCore": "Warning"
   }
+},
+"AllowedHosts": "*",
+"ConnectionStrings": {
+ "DefaultConnection": "Server=localhost;Port=3306;database=animal_shelter;uid=[USERNAME];pwd=[PASSWORD];
+},
+"JWT": {
+  "ValidAudience": "http://localhost:4200",
+  "ValidIssuer": "http://localhost:5000",
+  "Secret": "JWTAuthenticationHIGHsecuredPasswordVVVp1OH7Xzyr" 
+}
 }
 ```
 
-- Update the connection string with your MySQL username and password.
+Replace `[USERNAME]` and `[PASSWORD]` with your MySQL username and password.
 
-- To be sure EF Core Migrations is installed on your computer, run `dotnet tool install --global dotnet-ef --version 6.0.0`.
-- Within the production folder "AnimalShelterApi" run:
+5. Make sure you have MySQL Server installed and running on your machine.
+
+6. Create a new database named "animal_shelter" in MySQL.
+
+7. Run the following command in the terminal or command prompt to apply the database migrations:
 
 ```
 dotnet ef database update
 ```
 
-- The `animal_shelter` schema will appear in your _Schemas_ tab of MySQL Workbench.
+8. Once the migrations are applied successfully, the "animal_shelter" database should be populated with the necessary tables.
 
-## Using This Api
+## Using This API
 
-- Endpoints for this API are:
+The Animal Shelter API provides the following endpoints for interacting with animal data:
 
-```
-GET http://localhost:5000/api/animals
-GET http://localhost:5000/api/animals/{id}
-PUT http://localhost:5000/api/animals/{id}
-DELETE http://localhost:5000/api/animals/{id}
+- GET /api/animals: Retrieves a list of all animals.
+- GET /api/animals/{id}: Retrieves the details of a specific animal.
+- PUT /api/animals/{id}: Updates the information of a specific animal.
+- DELETE /api/animals/{id}: Deletes a specific animal.
 
-```
+To use these endpoints, you can send HTTP requests to the corresponding URLs using tools like Postman or cURL.
 
 ## Query Parameters
 
-| Parameter | Type   | Required     | Description                                   | Example Url                                         |
-| --------- | ------ | ------------ | --------------------------------------------- | --------------------------------------------------- |
-| Animals   | List   | not required | Returns all animals in the database           | http://localhost:5000/api/animals                   |
-| Species   | String | not required | Returns matching species type, "Dog" or "Cat" | http://localhost:5000/api/animals?species=[SPECIES] |
-| Sex       | String | not required | Returns matching sex type, "Male" or "Female" | http://localhost:5000/api/animals?sex=[SEX]         |
-| Status    | String | not required | Returns animals with a matching status        | http://localhost:5000/api/animals?status=[STATUS]   |
-| Breed     | String | not required | Returns animals of the matching breed         | http://localhost:5000/api/animals?breed=[BREED]     |
-| Age       | Int    | not required | Returns animals of the matching age           | http://localhost:5000/api/animals?age=[AGE]         |
+The Animal Shelter API supports the following query parameters for filtering the list of animals:
 
-Please note that you can replace [SPECIES], [SEX], [STATUS], [BREED], and [AGE] with the actual values you want to search for in the URLs. For example, if you want to search for dogs, the URL would be: http://localhost:5000/api/animals?species=Dog.
+- species: Filters animals by species type. Valid values are "Dog" and "Cat".
+- sex: Filters animals by sex. Valid values are "Male" and "Female".
+- status: Filters animals by status.
+- breed: Filters animals by breed.
+- age: Filters animals by age.
 
-## JSON Web Tokens (JWT) - Accessing API
+You can include these query parameters in the URL when making a GET request to the /api/animals endpoint. Here's an example URL with query parameters:
 
-To access information from this API, you are required to authenticate using a JSON Web Token (JWT). Follow the steps below to register for an account, log in, and obtain a valid JWT token for accessing the API.
-
-### 1. Register for an Account
-To register for an account, send a POST request to the following endpoint:
 ```
-http://localhost:5000/api/Authenticate/register
+GET http://localhost:5000/api/animals?species=Dog&sex=Male
 ```
 
-Include the following details in the request body, using raw JSON format:
-```json
-{
-    "username" : "example",
-    "email" : "example@gmail.com",
-    "password" : "Password@123"
-}
-```
+This URL will retrieve a list of male dogs.
 
-Replace the `username`, `email`, and `password` values with your desired registration details.
+## JSON Web Tokens (JWT) - Accessing the API
 
-### 2. Log In
-To log in and obtain a valid JWT token, send a POST request to the following endpoint:
-```
-http://localhost:5000/api/Authenticate/login
-```
+To access information from this API, you need to authenticate using JSON Web Tokens (JWT). Follow the steps below to register for an account, log in, and obtain a valid JWT token for accessing the API:
 
-Provide your username and password in the request body, using raw JSON format:
-```json
-{
-    "username" : "example",
-    "password" : "Password@123"
-}
-```
+1. Register for an Account:
+   - Send a POST request to the following endpoint: `/api/Authenticate/register`
+   - Include the following details in the request body:
+     ```json
+     {
+       "username": "example",
+       "email": "example@gmail.com",
+       "password": "Password@123"
+     }
+     ```
+     Replace the `username`, `email`, and `password` values with your desired registration details.
 
-Replace the `username` and `password` values with the credentials you used during registration.
+2. Log In:
+   - Send a POST request to the following endpoint: `/api/Authenticate/login`
+   - Provide your username and password in the request body:
+     ```json
+     {
 
-### 3. Retrieve JWT Token
-Upon successful login, the API will respond with a JWT token. Copy the JWT token value returned in the response.
 
-### 4. Accessing API Endpoints
-To access information from the API, use the JWT token you received after logging in. In Postman, navigate to the Authorization tab and select the "Bearer Token" type. Paste the copied JWT token into the token field.
+       "username": "example",
+       "password": "Password@123"
+     }
+     ```
+     Replace the `username` and `password` values with the credentials you used during registration.
 
-Now you are authenticated and authorized to make requests to the API endpoints. Enjoy utilizing the Animal API for your desired functionality.
+3. Retrieve JWT Token:
+   - Upon successful login, the API will respond with a JWT token. Copy the JWT token value returned in the response.
+
+4. Accessing API Endpoints:
+   - To access the API endpoints, you need to include the JWT token in the request headers.
+   - Set the `Authorization` header to `Bearer [JWT_TOKEN]`, replacing `[JWT_TOKEN]` with the JWT token you received after logging in.
+   - Now you can make requests to the API endpoints with the required authentication.
 
 ## Known bugs
 
+Currently, there are no known bugs in the Animal Shelter API. However, if you encounter any issues or have any suggestions, please feel free to report them in the GitHub repository for this project.
+
 ## License
 
-[MIT](https://opensource.org/license/mit)
+[MIT](https://opensource.org/licenses/MIT). 
 
 Copyright (c) 2023 Kymani Stephens
