@@ -110,8 +110,6 @@ To access information from this API, you need to authenticate using JSON Web Tok
    - Provide your username and password in the request body:
      ```json
      {
-
-
        "username": "example",
        "password": "Password@123"
      }
