@@ -35,18 +35,18 @@ The Animal Shelter API is a RESTful web service designed to manage animal data f
   - Create a file called 'appsettings.Development.json' in the production directory "AnimalShelterApi".
   - Add the following code to the appsettings.Development.json file:
 
-  ```
-{
+ ```
+ { 
   "Logging": {
     "LogLevel": {
       "Default": "Information",
       "Microsoft": "Trace",
       "Microsoft.AspNetCore": "Information",
       "Microsoft.Hosting.Lifetime": "Information"
-    }
-  }
-}
-  ```
+     }
+   }
+ }
+ ```
 
 - Update the connection string with your MySQL username and password.
 
@@ -70,8 +70,6 @@ PUT http://localhost:5000/api/animals{id}
 DELETE http://localhost:5000/api/animals{id}
 
 ```
-
-<hr>
 
 ## Query Parameters
 
