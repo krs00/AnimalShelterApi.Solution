@@ -112,8 +112,6 @@ Please note that you can replace [SPECIES], [SEX], [STATUS], [BREED], and [AGE] 
 
 ## Known bugs
 
-Ran out of time for roles but will fix later!!!
-
 ## License
 
 [MIT](https://opensource.org/license/mit)
