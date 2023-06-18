@@ -132,6 +132,6 @@ Currently, there are no known bugs in the Animal Shelter API. However, if you en
 
 ## License
 
-[MIT](https://opensource.org/licenses/MIT). 
+[MIT](https://opensource.org/licenses/MIT)
 
 Copyright (c) 2023 Kymani Stephens
